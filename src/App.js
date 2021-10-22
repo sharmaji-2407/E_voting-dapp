@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Web3 from 'web3';
 import NavBar from './NavBar';
-
-
+import Container from './Container';
 
 
 
@@ -56,9 +55,10 @@ function App() {
   return (
     
     <div className="container">
-    <NavBar />
+    <NavBar account= {account}/>
       <h1>E Voting Dapp</h1>
       <p>Your Account : {account} </p>
+      <Container />
     </div>
   );
 }

@@ -3,21 +3,21 @@ ul.topnav {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgba(50, 7, 99, 0.363);
+    background-color: rgba(255, 255, 255, 0);
     font-family: arial;
-    text-align: left;
+    text-align: right;
     width: 100%;
     position: sticky;
     top: 0;
   }
-  ul.topnav li {float: left;}
+  ul.topnav li {float: right;}
   ul.topnav li a {
     display: block;
-    color: rgb(255, 255, 255);
+    color: rgb(70, 70, 70);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    float: left;
+    /* float: left; */
     font-size: 17px;
     border-right: 1px solid rgba(187, 187, 187, 0);
   }
@@ -26,7 +26,7 @@ ul.topnav {
       color: rgb(63, 12, 122);
   }
   ul.topnav li a.active {
-      background-color: #b700ff;
+      background-color: #a7a7a7;
   }
   ul.topnav li.right {
       float: right;
