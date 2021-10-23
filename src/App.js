@@ -25,15 +25,20 @@ function App() {
   //<---- New Way to connect to metamask ---->
   if (window.ethereum) 
   {
-      try {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      try 
+      {
+        const provider = await window.ethereum.request({ method: 'eth_requestAccounts' });
         //setaccount(accounts);
-      } catch (error) {
-        if (error.code === 4001) {
-          // User rejected request
+      } 
+      catch (error)
+       {
+        if (error.code === 4001) 
+          {
+            // User rejected request
+          }
         }
-      }
-    }
+  }
+
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
     const network = await web3.eth.net.getNetworkType()
     const accounts = await web3.eth.getAccounts();
