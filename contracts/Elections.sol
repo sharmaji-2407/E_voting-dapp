@@ -43,6 +43,7 @@ contract Elections{
 
     }
 
+
     //definig a function for casting vote
     function Vote(uint _id) public{
         
