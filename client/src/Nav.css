@@ -11,7 +11,7 @@ ul.topnav {
     top: 0;
   }
   ul.topnav li {float: right;}
-  ul.topnav li a {
+  ul.topnav li  {
     display: block;
     color: rgb(70, 70, 70);
     text-align: center;
@@ -21,11 +21,11 @@ ul.topnav {
     font-size: 17px;
     border-right: 1px solid rgba(187, 187, 187, 0);
   }
-  ul.topnav li a:hover:not(.active) {
+  ul.topnav li :hover:not(.active) {
       background-color: #ddd;
       color: rgb(63, 12, 122);
   }
-  ul.topnav li a.active {
+  ul.topnav li .active {
       background-color: #a7a7a7;
   }
   ul.topnav li.right {

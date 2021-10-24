@@ -63,7 +63,7 @@ function App() {
     <NavBar account= {account}/>
       <h1>E Voting Dapp</h1>
       <p>Your Account : {account} </p>
-      <Container />
+      <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} />
     </div>
   );
 }
