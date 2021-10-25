@@ -4,6 +4,9 @@ import './Container.css';
 
 
 const Container = (props) => {
+
+    // const card_width = props.width;
+
     return (
         <div>
             {/* <div className="content">
@@ -13,19 +16,20 @@ const Container = (props) => {
                 <p className="card-text">{props.content}
                 
                 </p>
-                <a href="#" className="btn btn-primary">Register</a>
+                <a href="#" className="btn btn-primary">Register</a>  450px 520px
             </div>
 
             </div> */}
-            <Card style={{ width: '20rem', height : "20rem" }} className="mx-auto">
+            
+            <Card style={{ width: props.width, height : props.height }} className="mx-auto" id="reg_card">
                 <Card.Body>
                     <Card.Title>{props.title}</Card.Title>
                     {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
                     <Card.Text>
                     {props.content}
                     </Card.Text>
-                    <Button variant="primary">{props.button}</Button>
-                   
+                    <Button className="main_btn">{props.button}</Button>
+
                 </Card.Body>
             </Card>
         </div>

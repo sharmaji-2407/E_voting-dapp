@@ -1,13 +1,63 @@
 .card{
     
-        margin: 0 auto; /* Added */
+        margin: 10 auto; /* Added */
         float: none; /* Added */
-        margin-bottom: 10px; /* Added */
+        margin-bottom: 0px; /* Added */
         text-align:center;
-
+        user-select: none;
+        width: 458px;
+        height: 526px;
 }
+
+#reg_card{
+        right: 150px;
+        float: right;
+        background-color: rgba(255, 255, 255, 0.411);
+        background: linear-gradient(to top, #ffffff79 0%, #abababcb 100%);
+        backdrop-filter: blur(2.5px);
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.35);
+        border-radius: 10px;    
+}
+
+
 .candidates{
         text-align:center;
-        display: inline-block;
         
+        flex-direction: row;
+        
+}
+.candidate_card{
+        display: inline-block;
+        margin: 20px;
+
+       
+}
+
+
+
+
+
+.vote_btn{
+        text-align:center;
+        float: left;
+        background-color: blanchedalmond;
+        
+}
+
+.vote_card:hover{
+        background-color: rgba(255, 255, 255, 0.411);
+        background: linear-gradient(to top, #ffffff79 0%, #ABABAB 100%);
+        backdrop-filter: blur(2.5px);
+}
+
+.main_btn{
+        position: relative;
+        top: 150px;
+        background-color:  #333333;
+        border: none;
+        text-align: center;
+}
+.main_btn:hover{
+        color: #2bce41;
+        background-color:  #333333e3;
 }

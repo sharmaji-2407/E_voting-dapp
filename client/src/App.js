@@ -5,6 +5,7 @@ import NavBar from './NavBar';
 import Vote from './Vote';
 import Container from './Container';
 import ElectionAbi from './contracts/Elections.json';
+import Button from '@restart/ui/esm/Button';
 
 
 
@@ -22,6 +23,10 @@ function App() {
   const [Candidate1, setCandidate1] = useState();
   const [Candidate2, setCandidate2] = useState();
   const [Candidate3, setCandidate3] = useState();
+
+
+  //states to render components
+  const [render_vote, setrender_vote] = useState(false);
 
 
   //to run these two functions before react mounts the component
@@ -90,21 +95,21 @@ function App() {
       //getting information form smart contract
           
       const candidate1 =  await election.methods.Candidates(1).call();
-      const candidate1Id = candidate1.id;
-      const candidate1Name = candidate1.name; 
-      const candidate1Party = candidate1.party; 
+      // const candidate1Id = candidate1.id;
+      // const candidate1Name = candidate1.name; 
+      // const candidate1Party = candidate1.party; 
       setCandidate1(candidate1);
 
       const candidate2 =  await election.methods.Candidates(2).call();
-      const candidate2Id = candidate2.id;
-      const candidate2Name = candidate2.name; 
-      const candidate2Party = candidate2.party; 
+      // const candidate2Id = candidate2.id;
+      // const candidate2Name = candidate2.name; 
+      // const candidate2Party = candidate2.party; 
       setCandidate2(candidate2);
 
       const candidate3 =  await election.methods.Candidates(3).call();
-      const candidate3Id = candidate3.id;
-      const candidate3Name = candidate3.name; 
-      const candidate3Party = candidate3.party; 
+      // const candidate3Id = candidate3.id;
+      // const candidate3Name = candidate3.name; 
+      // const candidate3Party = candidate3.party; 
       setCandidate3(candidate3);
 
 
@@ -123,6 +128,20 @@ function App() {
 
 }
 
+  //send vote to vote function in smart contract
+  //transaction is happening here
+  const voteCandidate = async (candidateid)=>{
+    setloader(true);
+    await ElectionSC
+    .methods
+    .vote(candidateid)
+    .send({from : currentAccount})
+    .on('transactionhash',()=>{
+      console.log("Transaction Success");
+    })
+    setloader(false);
+  }
+
   //stting up loader
   if(loader){
     return <div>loading...</div>
@@ -132,9 +151,24 @@ function App() {
     <div className="app">
       <NavBar account= {currentAccount}/>
       <h1>E Voting Dapp</h1>
-      <p>Your Account : {currentAccount} </p>
-      <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} />
-      <Vote candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} />
+      
+      {/* <p>Your Account : {currentAccount} </p> */}
+      <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} width={'400px'} height={'500px'}/>
+
+      {/* test button */}
+      <Button onClick={()=>{setrender_vote(true)}}>vote</Button>
+      <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>
+      {render_vote && (<Vote candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} vote={voteCandidate} />)}
+     
+      <div className="ellipse_out">
+        <div className="ellipse_in">
+        </div>
+      </div>
+      <div className="circle-overlaping">
+      </div>
+
+      
+      
     </div>
   );
 }
