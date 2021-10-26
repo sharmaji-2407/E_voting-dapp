@@ -1,7 +1,7 @@
 import React,{ useState } from 'react';
 import Votecard from './VoteCard';
 import VoteButton from './VoteButton';
-import './Container.css'
+import '../css/Container.css'
 
 const Vote = (prop) => {
     const [Vote_id, setVote_id] = useState();
@@ -23,7 +23,9 @@ const Vote = (prop) => {
                <div className="candidate_card" onClick={()=>select_cand(prop.candidate3.id)}><Votecard party={prop.candidate3.party} name={prop.candidate3.name} id={prop.candidate3.id}/></div>
                
             </div>
-            {Btn_mount && (<div className="vote_btn"> <VoteButton  vote_id={Vote_id}/></div>)}
+            {Btn_mount && (<div className="vote_btn"> <VoteButton  vote_id={Vote_id} castVote={prop.vote}/></div>)}
+
+            {/* <p>Votes : {prop.candidate1.party} {prop.candidate1.voteCount}<br/> {prop.candidate2.party} {prop.candidate2.voteCount}<br/> {prop.candidate3.party} {prop.candidate3.voteCount}<br/></p> */}
         </div>
     );
 }

@@ -1,5 +1,5 @@
 .card{
-    
+        
         margin: 10 auto; /* Added */
         float: none; /* Added */
         margin-bottom: 0px; /* Added */
@@ -39,7 +39,7 @@
 
 .vote_btn{
         text-align:center;
-        float: left;
+        /* float: left; */
         background-color: blanchedalmond;
         
 }
@@ -51,10 +51,11 @@
 }
 
 .main_btn{
-        position: relative;
-        top: 150px;
+        position:relative;
+        top: 200px;
         background-color:  #333333;
         border: none;
+        /* float: left; */
         text-align: center;
 }
 .main_btn:hover{

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Nav.css';
+import '../css/Nav.css';
 
 const Navbar = (props) => {
     return (
@@ -16,7 +16,7 @@ const Navbar = (props) => {
                         
                         
                         <li className="nav-item">
-                        <a className="nav-link" href="" >Account: {props.account}</a>
+                        <a className="nav-link">Account: {props.account}</a>
                         </li>
                     </ul>
                     <form className="d-flex">

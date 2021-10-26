@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Web3 from 'web3';
-import NavBar from './NavBar';
-import Vote from './Vote';
-import Container from './Container';
+import NavBar from './components/NavBar';
+import Vote from './components/Vote';
+import Container from './components/Container';
 import ElectionAbi from './contracts/Elections.json';
 import Button from '@restart/ui/esm/Button';
+import Loader from './components/Loader';
+import VoteCounter from './components/VoteCounter';
 
+const vote_count_disp = () =>{
+  return(<p>Votes : {'{'}prop.candidate1.party{'}'} {'{'}prop.candidate1.voteCount{'}'}<br /> {'{'}prop.candidate2.party{'}'} {'{'}prop.candidate2.voteCount{'}'}<br /> {'{'}prop.candidate3.party{'}'} {'{'}prop.candidate3.voteCount{'}'}<br /></p>
+  );
+}
 
 
 
@@ -27,6 +33,21 @@ function App() {
 
   //states to render components
   const [render_vote, setrender_vote] = useState(false);
+  const [render_Reg, setrender_Reg] = useState(false);
+  const [render_Login, setrender_Login] = useState(false);
+
+  //button click events 
+  const vote_event = ()=>{
+    setrender_vote(true);
+    setrender_Login(false);
+    setrender_Reg(false);
+  }
+
+  const reg_event = () =>{
+    setrender_vote(false);
+    setrender_Login(false);
+    setrender_Reg(true);
+  }
 
 
   //to run these two functions before react mounts the component
@@ -80,6 +101,11 @@ function App() {
     const networkData = ElectionAbi.networks[networkId];
 
 
+    
+
+
+
+
 
 
     //setting up a condition to check if network id is compatible with ganache or not
@@ -117,6 +143,7 @@ function App() {
       setElectionSC(election);
       
       console.log(election);
+      console.log(candidate1.voteCount);
 
       //setting loader as false as the loading part is done 
       setloader(false);
@@ -132,23 +159,34 @@ function App() {
   //transaction is happening here
   const voteCandidate = async (candidateid)=>{
     setloader(true);
+    try{
     await ElectionSC
     .methods
-    .vote(candidateid)
+    .Vote(candidateid)
     .send({from : currentAccount})
     .on('transactionhash',()=>{
-      console.log("Transaction Success");
+      console.log("Transaction Success. Vote casted.");
     })
+  }
+  catch(error){
+    window.alert("Transaction Unsuccessful");
+  }
     setloader(false);
   }
 
   //stting up loader
   if(loader){
-    return <div>loading...</div>
+    return <Loader />
   }
+
+  
+  
+
+
   return (
     
     <div className="app">
+    {/* <Loader /> */}
       <NavBar account= {currentAccount}/>
       <h1>E Voting Dapp</h1>
       
@@ -156,17 +194,16 @@ function App() {
       <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} width={'400px'} height={'500px'}/>
 
       {/* test button */}
-      <Button onClick={()=>{setrender_vote(true)}}>vote</Button>
+      <Button onClick={vote_event}>vote</Button>
       <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>
       {render_vote && (<Vote candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} vote={voteCandidate} />)}
      
-      <div className="ellipse_out">
+      {/* <div className="ellipse_out">
         <div className="ellipse_in">
         </div>
-      </div>
-      <div className="circle-overlaping">
-      </div>
-
+      </div> */}
+      
+      <VoteCounter candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} />
       
       
     </div>

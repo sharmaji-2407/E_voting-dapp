@@ -24,32 +24,3 @@
 }
 
 
-.circle-overlaping{
-    width: 100px;
-    height: 100px;
-    background-color: red;
-    border-radius: 50%;
-    position:relative;
-  }
-  
-  .circle-overlaping::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 20px;
-    background-color: yellow;
-    width: 100px;
-    height:100px;
-    border-radius: 50%;
-  }
-  
-  .circle-overlaping::after{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 40px;
-    background-color: blue;
-    width: 100px;
-    height:100px;
-    border-radius: 50%;
-  }

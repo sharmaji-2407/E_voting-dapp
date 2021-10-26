@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card} from 'react-bootstrap';
-import './Container.css';
+import '../css/Container.css';
 const Votecard = (props) => {
     return (
         <div >

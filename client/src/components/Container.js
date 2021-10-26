@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button,Card } from 'react-bootstrap';
-import './Container.css';
+import '../css/Container.css';
 
 
 const Container = (props) => {
@@ -21,14 +21,14 @@ const Container = (props) => {
 
             </div> */}
             
-            <Card style={{ width: props.width, height : props.height }} className="mx-auto" id="reg_card">
+            <Card style={{ width: props.width, height : props.height }} className="" id="reg_card">
                 <Card.Body>
                     <Card.Title>{props.title}</Card.Title>
                     {/* <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle> */}
                     <Card.Text>
                     {props.content}
                     </Card.Text>
-                    <Button className="main_btn">{props.button}</Button>
+                    <Button className="main_btn mx-auto">{props.button}</Button>
 
                 </Card.Body>
             </Card>
