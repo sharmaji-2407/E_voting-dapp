@@ -192,7 +192,7 @@ function App() {
       
       {/* <p>Your Account : {currentAccount} </p> */}
       <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} width={'400px'} height={'500px'}/>
-
+      
       {/* test button */}
       <Button onClick={vote_event}>vote</Button>
       <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>

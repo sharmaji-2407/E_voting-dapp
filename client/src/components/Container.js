@@ -1,11 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { Button,Card } from 'react-bootstrap';
 import '../css/Container.css';
+import RegistrationForm from './RegistrationForm';
 
 
 const Container = (props) => {
 
     // const card_width = props.width;
+    const [active_form, setactive_form] = useState(false)
+    
+
+    const mount_form = (val) => {
+        if(val === 'Get Registered') {setactive_form("registration_form");}
+        else {setactive_form("login_form");}
+            
+    }
 
     return (
         <div>
@@ -28,10 +37,14 @@ const Container = (props) => {
                     <Card.Text>
                     {props.content}
                     </Card.Text>
-                    <Button className="main_btn mx-auto">{props.button}</Button>
-
+                    <Button className="main_btn mx-auto" onClick={()=>mount_form(props.button)} >{props.button}</Button>
+                    
                 </Card.Body>
+                <div className='form'>
+                    {active_form === "registration_form" && <RegistrationForm />}
+                </div>
             </Card>
+            
         </div>
     );
 }
