@@ -19,3 +19,5 @@ If followed correctly the project will work fine.
 - If you run into <code>truffle.ps1 cannot be loaded because running scripts is disabled on this system.</code> ERROR. Then visit this link (<a href="https://www.c-sharpcorner.com/article/how-to-fix-ps1-can-not-be-loaded-because-running-scripts-is-disabled-on-this-sys/" target="_blank">Fix Error PS1<a/>).
 <br><br>
 - If it says <code>'Set-ExecutionPolicy' is not recognized as an internal or external command</code>. Use <strong>PowerShell</strong> and run those scripts and not <strike>CMD</strike>. refer (<a href="https://stackoverflow.com/questions/58536140/set-executionpolicy-is-not-recognized-as-an-internal-or-external-command-oper" target="_blank">here</a>).
+
+ - If the Smart Contract is still not getting deployed then go tho E_voting-dapp directory and locate "build" folder and delete it's content. Now you are good to go. 
