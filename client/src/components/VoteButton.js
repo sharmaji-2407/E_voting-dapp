@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap';
+
 const VoteButton = (prop) => {
 
     const cast_vote = (e) => {

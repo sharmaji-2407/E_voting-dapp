@@ -1,17 +1,17 @@
-.card{
+.cont{
         
-        margin: 10 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 0px; /* Added */
+        margin: 10 auto;
+        float: none; 
+        margin-bottom: 0px; 
         text-align:center;
         user-select: none;
         width: 458px;
         height: 526px;
 }
 
-#reg_card{
-        right: 150px;
+#cont_id{
         float: right;
+        margin-right: 100px;
         background-color: rgba(255, 255, 255, 0.411);
         background: linear-gradient(to top, #ffffff79 0%, #abababcb 100%);
         backdrop-filter: blur(2.5px);
@@ -27,16 +27,11 @@
         flex-direction: row;
         
 }
-.candidate_card{
+.candidate_card 
+{
         display: inline-block;
         margin: 20px;
-
-       
 }
-
-
-
-
 
 .vote_btn{
         text-align:center;
@@ -58,23 +53,46 @@
         border: none;
         /* float: left; */
         text-align: center;
+        height: 70px;
+        width: 150px;
 }
 .main_btn:hover{
         color: #2bce41;
         background-color:  #333333e3;
 }
 
+#confirm_btn{
+        height: 50px;
+        top: 100px;
+}
+
 .form{
-        position: absolute;
+        position: relative;
         left: 25%;
         top: 100px;
         justify-content: center;
         text-align: center;
         height: 100px;
         width: 50%;
+        transition-delay: 2s;
+}
+
+.label h3{
+        position: relative;
+        top: 120px;
+        font-size: 2rem;
+}
+.label h5{
+        position: relative;
+        top: 125px;
+        
+}
+
+
+
+
         
 
-}
         
 
         
