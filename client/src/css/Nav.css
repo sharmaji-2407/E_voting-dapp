@@ -1,9 +1,21 @@
+.navbar{
+    background-color: #a7a7a7;
+    /* background: linear-gradient(to top, #0000008f 50%, #ffffffcb 100%); */
+    backdrop-filter: blur(2.5px);
+    z-index: 500;
+    
+    
+    
+    
+}
 ul.topnav {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0);
+    /* background-color: rgba(255, 255, 255, 0); */
+    background: linear-gradient(to top, #5900ff8f 0%, #000000cb 100%);
+    backdrop-filter: blur(2.5px);
     font-family: arial;
     text-align: right;
     width: 100%;

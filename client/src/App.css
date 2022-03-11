@@ -8,19 +8,64 @@
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
-    
+    position: relative;
     height: 100vh;
 }
 
-.ellipse_out{
-    position: relative;
-    background-color: #CACACA;
-    height: 3200px;
-    width: 3703px;
+.ellipse{
+    position: absolute;
+    height: 829px;
+    width: 913px;
     border-radius: 50%;
     float: left;
-    left: -3080px;
-    top: -1800px;
+    left: -266px;
+    top: -57px;
+}
+.ellipse2{
+    position: absolute;
+    height: 853px;
+    width: 947px;
+    border-radius: 50%;
+    float: left;
+    left: -210px;
+    top: -98px;
+    opacity: 95%;
+    transition: transform .5s ease-in-out;
+    
+}
+.ellipse2:hover{
+    /* transition: transform 1s ease-in-out; */
+    transform: translateX(12%);
+    
 }
 
 
+.register_container{
+    position: absolute;   
+    right: 100px;
+    float: right;
+    top: 16%;
+  
+}
+
+.starting{
+    width: 100%;
+    height:100%;
+    
+}
+
+.starting h1{
+    color: aliceblue;
+    display: inline;
+    position: absolute;
+    /* top: 30%; */
+    left: 50px;
+    font-size: 5.6rem;
+    width: 35%;
+    height: 70%;
+    z-index: 500;
+    padding: 10% 0;
+    
+    
+
+}

@@ -188,11 +188,19 @@ function App() {
     <div className="app">
     {/* <Loader /> */}
       <NavBar account= {currentAccount}/>
-      <h1>E Voting Dapp</h1>
+     
       
       {/* <p>Your Account : {currentAccount} </p> */}
-      <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} width={'400px'} height={'500px'}/>
-      
+
+      <div className='starting'>
+        <h1 className='light'>Welcome to new world of voting</h1>
+        <div className='register_container'>
+          <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} width={'400px'} height={'500px'}/>
+        </div>
+      </div>
+        
+      <div className='ellipse bg-dark'></div>
+      <div className='ellipse2 bg-dark'></div>
       {/* test button */}
       <Button onClick={vote_event}>vote</Button>
       <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>

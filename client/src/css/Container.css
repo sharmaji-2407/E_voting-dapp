@@ -1,7 +1,7 @@
 .cont{
         
-        margin: 10 auto;
-        float: none; 
+        margin: 10px auto;
+        /* float: none;  */
         margin-bottom: 0px; 
         text-align:center;
         user-select: none;
@@ -10,8 +10,8 @@
 }
 
 #cont_id{
-        float: right;
-        margin-right: 100px;
+        /* float: right; */
+        /* margin-right: 100px; */
         background-color: rgba(255, 255, 255, 0.411);
         background: linear-gradient(to top, #ffffff79 0%, #abababcb 100%);
         backdrop-filter: blur(2.5px);
