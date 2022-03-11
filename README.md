@@ -14,3 +14,8 @@ Step 4 will deploy the smart contract on local block chain hosted by ganache.
 Step 5 will start the react server on local machine.
 
 If followed correctly the project will work fine.
+
+<h3>Problem Fixers :</h3>
+- If you run into <code>truffle.ps1 cannot be loaded because running scripts is disabled on this system.</code> ERROR. Then visit this link (<a href="https://www.c-sharpcorner.com/article/how-to-fix-ps1-can-not-be-loaded-because-running-scripts-is-disabled-on-this-sys/" target="_blank">Fix Error PS1<a/>).
+<br><br>
+- If it says <code>'Set-ExecutionPolicy' is not recognized as an internal or external command</code>. Use <strong>PowerShell</strong> and run those scripts and not <strike>CMD</strike>. refer (<a href="https://stackoverflow.com/questions/58536140/set-executionpolicy-is-not-recognized-as-an-internal-or-external-command-oper" target="_blank">here</a>).
