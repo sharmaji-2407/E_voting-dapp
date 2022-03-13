@@ -2,6 +2,7 @@ import React,{useState} from 'react';
 import { Button,Card } from 'react-bootstrap';
 import '../css/Container.css';
 import RegistrationForm from './RegistrationForm';
+import LoginForm from './LoginForm';
 
 
 const Container = (props) => {
@@ -42,6 +43,11 @@ const Container = (props) => {
                 <div className='form'>
                     <RegistrationForm />
                 </div>
+               }
+               {active_form === "login_form" && 
+               <div className='form'>
+                    <LoginForm />
+               </div>
                }
             
             </div>

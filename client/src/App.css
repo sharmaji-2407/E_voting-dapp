@@ -1,16 +1,25 @@
 .app{
     /* border: none; */
     /* padding: 0%; */
+    position: relative;
     margin: 0%;
     width: 100%;
-    
     background-image: url('./media/bg_big.png');
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
-    position: relative;
     height: 100vh;
 }
+
+.Typewriter{
+    position: absolute;
+    left: 62px;
+    top: 521px;
+    font-size: 3rem;
+    color: aliceblue;
+    z-index: 500;
+}
+    
 
 .ellipse{
     position: absolute;
@@ -20,6 +29,7 @@
     float: left;
     left: -266px;
     top: -57px;
+    z-index: 100;
 }
 .ellipse2{
     position: absolute;
@@ -32,10 +42,12 @@
     opacity: 95%;
     transition: transform .5s ease-in-out;
     
+    
 }
 .ellipse2:hover{
     /* transition: transform 1s ease-in-out; */
     transform: translateX(12%);
+    
     
 }
 
@@ -44,8 +56,20 @@
     position: absolute;   
     right: 100px;
     float: right;
-    top: 16%;
+    top: 10%;
+    text-align: center;
   
+}
+.register_container p{
+    font-size: 1.2rem;
+    
+    margin: 10px auto 0 0;
+    text-align: center;
+}
+.register_container p:hover{
+    color: green;
+    text-decoration: underline;
+    cursor:default;
 }
 
 .starting{
@@ -60,12 +84,81 @@
     position: absolute;
     /* top: 30%; */
     left: 50px;
-    font-size: 5.6rem;
+    font-size: 5rem;
     width: 35%;
     height: 70%;
     z-index: 500;
     padding: 10% 0;
     
+}
+
+.navi-list{
     
+    position: absolute;
+    /* display: none; */
+    opacity: 0;
+    color: aliceblue;
+    z-index: 100;
+    animation: disappear .3s ease-out;
 
 }
+
+
+
+.navi-list a{
+    
+    margin: 50px auto;
+
+    
+}
+
+#li1{
+    position: absolute;
+    top: 195px;
+    left: 722px;
+}
+#li2{
+    position: absolute;
+    top: 381px;
+    left: 774px;
+}
+#li3{
+    position: absolute;
+    top: 562px;
+    left: 732px;
+    text-align: center;
+   
+}
+
+
+
+.ellipse2:hover > .navi-list{
+    /* visibility:visible; */
+    /* display: block; */
+    opacity: 1;
+    animation: appear .5s ease-in;
+    
+
+    
+}
+
+
+
+@keyframes appear{
+    from {opacity: 0; }
+    to {opacity: 1; }
+}
+
+@keyframes disappear{
+    from {opacity: 1; }
+    
+    to {opacity: 0; }
+}
+
+@keyframes list-movement {
+    to{
+
+    }
+}
+
+

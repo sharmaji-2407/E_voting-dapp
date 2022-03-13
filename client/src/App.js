@@ -8,6 +8,7 @@ import ElectionAbi from './contracts/Elections.json';
 import Button from '@restart/ui/esm/Button';
 import Loader from './components/Loader';
 import VoteCounter from './components/VoteCounter';
+import Typewriter from "typewriter-effect";
 
 const vote_count_disp = () =>{
   return(<p>Votes : {'{'}prop.candidate1.party{'}'} {'{'}prop.candidate1.voteCount{'}'}<br /> {'{'}prop.candidate2.party{'}'} {'{'}prop.candidate2.voteCount{'}'}<br /> {'{'}prop.candidate3.party{'}'} {'{'}prop.candidate3.voteCount{'}'}<br /></p>
@@ -18,6 +19,14 @@ const vote_count_disp = () =>{
 
 
 function App() {
+
+
+
+
+
+
+// <----------------------States------------------------>
+
   //const [mounted, setMounted] = useState(false)
   const [currentAccount, setcurrentAccount] = useState("");
   const [loader, setloader] = useState(true);
@@ -33,21 +42,53 @@ function App() {
 
   //states to render components
   const [render_vote, setrender_vote] = useState(false);
-  const [render_Reg, setrender_Reg] = useState(false);
-  const [render_Login, setrender_Login] = useState(false);
+  const [form_card_select, setform_card_select] = useState("Registration");
+  
+  //to store the card selector props
+  const [card_title, setcard_title] = useState("Register")
+  const [card_content, setcard_content] = useState("Get your self registered bofore the voting process")
+  const [card_btn, setcard_btn] = useState("Get Registered")
+
+
+
+
+
+
+
+// <-----------------------Button Click events----------------------------->
 
   //button click events 
-  const vote_event = ()=>{
+  const vote_event = () => {
     setrender_vote(true);
-    setrender_Login(false);
-    setrender_Reg(false);
+    setform_card_select("none");
   }
 
-  const reg_event = () =>{
+  const form_card_selector = (select_value) => {
     setrender_vote(false);
-    setrender_Login(false);
-    setrender_Reg(true);
+    if(select_value === "Login")
+    {
+      setform_card_select("Login")
+      
+    }
+    else if(select_value === "Registration")
+    {
+      setform_card_select("Register")
+      
+    }
   }
+
+  if(form_card_select === "Register"){
+    setcard_title ("Register");
+    setcard_content("Get your self registered bofore the voting process");
+    setcard_btn("Get Registered");
+  }
+  else{
+    setcard_title ("Login");
+    setcard_content("Login using your credentials");
+    setcard_btn("Login");
+  }
+
+
 
 
   //to run these two functions before react mounts the component
@@ -99,15 +140,6 @@ function App() {
 
     //getting address of smart contract to interact with it
     const networkData = ElectionAbi.networks[networkId];
-
-
-    
-
-
-
-
-
-
     //setting up a condition to check if network id is compatible with ganache or not
     //Basically check connection with ganache
 
@@ -152,8 +184,17 @@ function App() {
     else{
       window.alert("Smart Contract not deployed to current network")
     }
+  }
 
-}
+    
+
+
+
+
+
+
+
+
 
   //send vote to vote function in smart contract
   //transaction is happening here
@@ -182,6 +223,7 @@ function App() {
   
   
 
+// <----------------------------Page Template--------------------------------------->
 
   return (
     
@@ -191,25 +233,44 @@ function App() {
      
       
       {/* <p>Your Account : {currentAccount} </p> */}
-
       <div className='starting'>
-        <h1 className='light'>Welcome to new world of voting</h1>
-        <div className='register_container'>
-          <Container title={"Register"} content={"Get your self registered"} button={"Get Registered"} width={'400px'} height={'500px'}/>
+      <h1 className='light'>Welcome to new era of voting.</h1>
+      
+      <Typewriter 
+      options={{
+        strings: ['It is safe.', 'It is transparent.', 'It is decentralized.'],
+        autoStart: true,
+        loop: true,
+      }}/>
+      <div className='register_container'>
+      {form_card_select === "Registration" &&
+      <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
+      
+      <p onClick={form_card_selector("Login")} >Already Register? Login Here.</p>
+      </div>
+      </div>
+      
+      
+      
+      <div className='ellipse bg-dark'></div>
+      
+      <div className='ellipse2 bg-dark'>
+
+        
+        <div className='navi-list'>
+          <a id="li1"><img src='../media/background.png' alt="Developers"/></a>
+          <a id="li2">Home</a>
+          <a id="li3">Help</a>
         </div>
       </div>
-        
-      <div className='ellipse bg-dark'></div>
-      <div className='ellipse2 bg-dark'></div>
+
+      
       {/* test button */}
       <Button onClick={vote_event}>vote</Button>
       <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>
       {render_vote && (<Vote candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} vote={voteCandidate} />)}
      
-      {/* <div className="ellipse_out">
-        <div className="ellipse_in">
-        </div>
-      </div> */}
+      
       
       <VoteCounter candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} />
       
