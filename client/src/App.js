@@ -10,6 +10,8 @@ import Loader from './components/Loader';
 import VoteCounter from './components/VoteCounter';
 import Typewriter from "typewriter-effect";
 import developers from './media/developer.png';
+import home from './media/home.png';
+import help from './media/help.png';
 
 const vote_count_disp = () =>{
   return(<p>Votes : {'{'}prop.candidate1.party{'}'} {'{'}prop.candidate1.voteCount{'}'}<br /> {'{'}prop.candidate2.party{'}'} {'{'}prop.candidate2.voteCount{'}'}<br /> {'{'}prop.candidate3.party{'}'} {'{'}prop.candidate3.voteCount{'}'}<br /></p>
@@ -269,8 +271,8 @@ const App = () => {
         
         <div className='navi-list'>
           <a id="li1"><img className='list-item' src={developers} alt="Developers"/></a>
-          <a id="li2">Home</a>
-          <a id="li3">Help</a>
+          <a id="li2"><img className='list-item' src={home} alt="Home"/></a>
+          <a id="li3"><img className='list-item' src={help} alt="Help"/></a>
         </div>
       </div>
 

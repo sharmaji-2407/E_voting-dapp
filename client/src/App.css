@@ -116,18 +116,19 @@
 
 #li1{
     position: absolute;
-    top: 195px;
-    left: 767px;
+    top: 169px;
+    left: 736px;
 }
 #li2{
     position: absolute;
-    top: 381px;
-    left: 774px;
+    top: 358px;
+    left: 800px;
+    height: 10px;
 }
 #li3{
     position: absolute;
-    top: 562px;
-    left: 732px;
+    top: 565px;
+    left: 757px;
     text-align: center;
    
 }
