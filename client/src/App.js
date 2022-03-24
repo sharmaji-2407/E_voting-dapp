@@ -9,6 +9,7 @@ import Button from '@restart/ui/esm/Button';
 import Loader from './components/Loader';
 import VoteCounter from './components/VoteCounter';
 import Typewriter from "typewriter-effect";
+import developers from './media/developer.png';
 
 const vote_count_disp = () =>{
   return(<p>Votes : {'{'}prop.candidate1.party{'}'} {'{'}prop.candidate1.voteCount{'}'}<br /> {'{'}prop.candidate2.party{'}'} {'{'}prop.candidate2.voteCount{'}'}<br /> {'{'}prop.candidate3.party{'}'} {'{'}prop.candidate3.voteCount{'}'}<br /></p>
@@ -18,7 +19,7 @@ const vote_count_disp = () =>{
 
 
 
-function App() {
+const App = () => {
 
 
 
@@ -42,12 +43,15 @@ function App() {
 
   //states to render components
   const [render_vote, setrender_vote] = useState(false);
-  const [form_card_select, setform_card_select] = useState("Registration");
+  
+  const [flag, setflag] = useState("alr_reg"); // alr_reg -> already registered ;  not_reg -> not registered
   
   //to store the card selector props
   const [card_title, setcard_title] = useState("Register")
-  const [card_content, setcard_content] = useState("Get your self registered bofore the voting process")
+  const [card_content, setcard_content] = useState("Get your self registered bofore the voting process.")
   const [card_btn, setcard_btn] = useState("Get Registered")
+
+  const [reg_log_switch, setreg_log_switch] = useState("Already Registered? Login Here.")
 
 
 
@@ -60,33 +64,38 @@ function App() {
   //button click events 
   const vote_event = () => {
     setrender_vote(true);
-    setform_card_select("none");
+    
   }
+
+  
 
   const form_card_selector = (select_value) => {
-    setrender_vote(false);
-    if(select_value === "Login")
+    //setrender_vote(false);
+    
+    
+    if (select_value === "alr_reg")
     {
-      setform_card_select("Login")
-      
+      console.log("login form");
+      setcard_title ("Login");
+      setcard_content("Login with your credentials and proceed for voting.");
+      setcard_btn("Login");
+      setreg_log_switch("Haven't registered yet? Get Registered.");
+      setflag("not_reg");
     }
-    else if(select_value === "Registration")
+    else if(select_value === "not_reg")
     {
-      setform_card_select("Register")
+      console.log("Reg form");
+      setcard_title ("Register");
+      setcard_content("Get your self registered bofore the voting process");
+      setcard_btn("Get Registered");
+      setreg_log_switch("Already Registered? Login Here.");
+      setflag("alr_reg");
+    }  
       
-    }
+    
   }
 
-  if(form_card_select === "Register"){
-    setcard_title ("Register");
-    setcard_content("Get your self registered bofore the voting process");
-    setcard_btn("Get Registered");
-  }
-  else{
-    setcard_title ("Login");
-    setcard_content("Login using your credentials");
-    setcard_btn("Login");
-  }
+ 
 
 
 
@@ -234,20 +243,21 @@ function App() {
       
       {/* <p>Your Account : {currentAccount} </p> */}
       <div className='starting'>
-      <h1 className='light'>Welcome to new era of voting.</h1>
+        <h1 className='light'>Welcome to new era of voting.</h1>
       
-      <Typewriter 
-      options={{
-        strings: ['It is safe.', 'It is transparent.', 'It is decentralized.'],
-        autoStart: true,
-        loop: true,
-      }}/>
-      <div className='register_container'>
-      {form_card_select === "Registration" &&
-      <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
-      
-      <p onClick={form_card_selector("Login")} >Already Register? Login Here.</p>
-      </div>
+        <Typewriter 
+        options={{
+          strings: ['It is safe.', 'It is transparent.', 'It is decentralized.'],
+          autoStart: true,
+          loop: true,
+        }}/>
+        <div className='register_container'>
+          {card_title === "Register" &&
+          <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
+          {card_title === "Login" &&
+          <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
+          <p onClick={()=>form_card_selector ( flag ) }> {reg_log_switch} </p>
+        </div>
       </div>
       
       
@@ -255,10 +265,10 @@ function App() {
       <div className='ellipse bg-dark'></div>
       
       <div className='ellipse2 bg-dark'>
-
+      
         
         <div className='navi-list'>
-          <a id="li1"><img src='../media/background.png' alt="Developers"/></a>
+          <a id="li1"><img className='list-item' src={developers} alt="Developers"/></a>
           <a id="li2">Home</a>
           <a id="li3">Help</a>
         </div>

@@ -52,6 +52,8 @@
 }
 
 
+
+
 .register_container{
     position: absolute;   
     right: 100px;
@@ -115,7 +117,7 @@
 #li1{
     position: absolute;
     top: 195px;
-    left: 722px;
+    left: 767px;
 }
 #li2{
     position: absolute;
@@ -130,6 +132,9 @@
    
 }
 
+.list-item{
+    width: 50px;
+}
 
 
 .ellipse2:hover > .navi-list{

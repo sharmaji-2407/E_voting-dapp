@@ -3,28 +3,41 @@ import { Button,Card } from 'react-bootstrap';
 import '../css/Container.css';
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
-
+import back_arrow from "../media/Back_Arrow.png";
 
 const Container = (props) => {
 
     // const card_width = props.width;
     const [active_form, setactive_form] = useState(false);
+    //label is for activating label and when it is marked false form content will be activated
     const [label, setlabel] = useState("active");
+    const [form, setform] = useState("inactive");
+    
+
     
 
     const mount_form = (val) => {
-        if(val === 'Get Registered') {
+        if(val === 'Get Registered')
+        {
             setactive_form("registration_form");
             setlabel("inactive");
-        
+            setform("active");
+            
         }
         else 
         {
             setactive_form("login_form");
-            setlabel("active");
+            setlabel("inactive");
+            setform("active");
         }
             
     }
+
+    const backBtn = () => {
+        setlabel("active");
+        setform("inactive");
+    }
+   
 
     return (
         <div>
@@ -39,18 +52,30 @@ const Container = (props) => {
                 </div>
                } 
 
-               {active_form === "registration_form" &&
-                <div className='form'>
-                    <RegistrationForm />
-                </div>
-               }
-               {active_form === "login_form" && 
-               <div className='form'>
-                    <LoginForm />
-               </div>
+               {
+                form === "active" && 
+                    <div>
+                    {active_form === "registration_form" &&
+                        <div className='form'>
+                        <img src={back_arrow} alt="back" className='back-btn' onClick={()=> backBtn() } />
+                            <RegistrationForm />
+                        </div>
+                    }
+
+                    {active_form === "login_form" && 
+                        <div className='form'>
+                        <img src={back_arrow} alt="back" className='back-btn' onClick={()=> backBtn() } />
+                            <LoginForm />
+                        </div>
+                    }
+                    </div>
                }
             
-            </div>
+
+
+
+               </div>
+               
             
         </div>
     );

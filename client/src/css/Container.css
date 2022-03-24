@@ -90,6 +90,21 @@
         margin: 50px auto 5px;
 }
 
+.back-btn{
+        position: absolute;
+        display: inline-block;
+        top: -70px;
+        left: -82px;    
+        width: 30px;
+}
+.back-btn:hover {
+        text-decoration: none !important;
+        background-color: #ffffff88 !important;
+        border-radius: 50%;
+        text-align: center;
+        justify-content: center;
+        
+}
 
 
 
