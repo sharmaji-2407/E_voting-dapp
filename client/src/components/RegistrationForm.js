@@ -5,12 +5,12 @@ import Axios from 'axios';
 
 const RegistrationForm = () => {
 
-    const [voterId, setvoterId] = useState('')
+    const [voterPassword, setvoterPassword] = useState('')
     const [voterName, setvoterName] = useState('')
-    const [voterAadhar, setvoterAadhar] = useState('')
+    const [voterId, setvoterId] = useState('')
     
     const submitData=()=>{
-        Axios.post("http://localhost:3001/api/insert",{voterId: voterId,voterName: voterName,voterAadhar: voterAadhar}).then(()=>{
+        Axios.post("http://localhost:3001/api/insert",{voterId: voterId,voterName: voterName,voterPassword: voterPassword}).then(()=>{
             alert("Sent");
         });
     };
@@ -18,31 +18,42 @@ const RegistrationForm = () => {
     useEffect(() => {
         Axios.get('http://localhost:3001/api/get').then((response)=>{
             console.log(response.data);
+            console.log("yes");
         })
         
     }, []);
 
     return (
         <div>
-            <FloatingLabel controlId="floatingInput" label="Voter ID" className="mb-3">
-                <Form.Control type="text" placeholder="xxxxxxxxxxxx" onChange={(e)=>{
-                    setvoterId(e.target.value)
-                }} />
-            </FloatingLabel>
+            <div className="loginform">
+                <div id='field1'> 
+                    <input type="text" id="name" className="form__input" autoComplete="off" placeholder=" " onChange={(e)=>{
+                        setvoterName(e.target.value) }}
+                    />
+                    <label htmlFor="text" className="form__label">Name</label>
+                </div>
+        
+                <div id='field2'>
+                    <input type="password" id="password" className="form__input" autoComplete="off" placeholder=" " onChange={(e)=>{
+                    setvoterPassword(e.target.value) }}
+                    />
+                    <label htmlFor="text" className="form__label">Set Password</label>
+                </div>
 
-            <FloatingLabel controlId="floatingInput" label="Voter Name"  className="mb-3">
-                <Form.Control type="text" placeholder="Narendra Modi" onChange={(e)=>{
-                    setvoterName(e.target.value)
-                }} />
-            </FloatingLabel> 
+                
+                <div id='field3'> 
+                    <input type="text" id="Id" className="form__input" autoComplete="off" placeholder=" " onChange={(e)=>{
+                        setvoterId(e.target.value) }}
+                    />
+                    <label htmlFor="text" className="form__label">Voter Id </label>
+                </div>
 
-            <FloatingLabel controlId="floatingInput" label="Aadhar Number" className="mb-3">
-                <Form.Control type="text" placeholder="xxxxxxxxxxxx" onChange={(e)=>{
-                    setvoterAadhar(e.target.value)
-                }} />
-            </FloatingLabel>
+            </div>
 
-            <Button className='mx-auto main_btn' id="confirm_btn" onClick={submitData}> Confirm </Button>
+            
+                <Button  className='mx-auto main_btn' id="confirm_btn" onClick={submitData} >Confirm</Button>
+            
+      
         </div>
     )
 }

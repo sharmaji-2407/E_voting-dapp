@@ -4,13 +4,19 @@ const mysql = require('mysql');
 const bodyParser = require("body-parser");
 const cors = require('cors');
 
+
+
+
 const db = mysql.createPool({
     host: 'localhost',
+    port: '3306',
     user: 'root',
     password: '2407',
     database: 'ev_dapp_user_reg',
     insecureAuth : true,
 });
+
+
 
 app.use(cors())
 app.use(bodyParser.urlencoded({extended:true}))
@@ -25,14 +31,14 @@ app.get('/api/get', (req,res) => {
 
 
 app.post("/api/insert", (req, res)=>{
+                    
 
-    
     const voterId = req.body.voterId
     const voterName = req.body.voterName
-    const voterAadhar = req.body.voterAadhar
+    const voterPassword = req.body.voterPassword
 
-    const sqlInsert = "INSERT INTO voter_info(voterId,voterName,voterAadhar) VALUES (?,?,?)"
-    db.query(sqlInsert, [voterId,voterName,voterAadhar],(err,result)=>{
+    const sqlInsert = "INSERT INTO voter_info(voterId,voterName,voterPassword) VALUES (?,?,?)"
+    db.query(sqlInsert, [voterId,voterName,voterPassword],(err,result)=>{
         console.log(result);
     });
 });

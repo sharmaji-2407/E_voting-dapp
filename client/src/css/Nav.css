@@ -26,7 +26,7 @@ ul.topnav {
   ul.topnav li {float: right;}
   ul.topnav li  {
     display: block;
-    color: rgb(70, 70, 70);
+    color: rgba(70, 70, 70, 0.377);
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;

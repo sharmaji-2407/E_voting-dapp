@@ -9,22 +9,18 @@ import Button from '@restart/ui/esm/Button';
 import Loader from './components/Loader';
 import VoteCounter from './components/VoteCounter';
 import Typewriter from "typewriter-effect";
-import developers from './media/developer.png';
-import home from './media/home.png';
-import help from './media/help.png';
+import developers from './media/code_50px.png';
+import home from './media/home_50px.png';
+import help from './media/help_50px.png';
+import moving_chain_bg from "./media/block-bg-unscreen.gif";
 
-const vote_count_disp = () =>{
-  return(<p>Votes : {'{'}prop.candidate1.party{'}'} {'{'}prop.candidate1.voteCount{'}'}<br /> {'{'}prop.candidate2.party{'}'} {'{'}prop.candidate2.voteCount{'}'}<br /> {'{'}prop.candidate3.party{'}'} {'{'}prop.candidate3.voteCount{'}'}<br /></p>
-  );
-}
+
+
 
 
 
 
 const App = () => {
-
-
-
 
 
 
@@ -55,7 +51,7 @@ const App = () => {
 
   const [reg_log_switch, setreg_log_switch] = useState("Already Registered? Login Here.")
 
-
+  const [page_render, setpage_render] = useState("home")
 
 
 
@@ -97,8 +93,10 @@ const App = () => {
     
   }
 
- 
-
+  const backBtn = () => {
+    setpage_render("home");
+  }
+  
 
 
 
@@ -197,16 +195,6 @@ const App = () => {
     }
   }
 
-    
-
-
-
-
-
-
-
-
-
   //send vote to vote function in smart contract
   //transaction is happening here
   const voteCandidate = async (candidateid)=>{
@@ -230,8 +218,11 @@ const App = () => {
   if(loader){
     return <Loader />
   }
+    
 
-  
+
+
+
   
 
 // <----------------------------Page Template--------------------------------------->
@@ -240,43 +231,80 @@ const App = () => {
     
     <div className="app">
     {/* <Loader /> */}
-      <NavBar account= {currentAccount}/>
-     
-      
-      {/* <p>Your Account : {currentAccount} </p> */}
-      <div className='starting'>
-        <h1 className='light'>Welcome to new era of voting.</h1>
-      
+    <div className='Navbar' onContextMenu={(e)=> e.preventDefault()}>
+      <NavBar account= {currentAccount} />
+    </div>
+    
+    <img className='moving_bg' src={moving_chain_bg} alt="moving chain" draggable="false" onContextMenu={(e)=> e.preventDefault()}/>
+    {page_render === "home"  &&
+    
+      <div className="home" >
+        
+        <div><h1 className='light' id="main-heading">Welcome to new era of voting.</h1>
+
+        
         <Typewriter 
         options={{
           strings: ['It is safe.', 'It is transparent.', 'It is decentralized.'],
           autoStart: true,
           loop: true,
         }}/>
-        <div className='register_container'>
-          {card_title === "Register" &&
-          <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
-          {card_title === "Login" &&
-          <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
-          <p onClick={()=>form_card_selector ( flag ) }> {reg_log_switch} </p>
-        </div>
-      </div>
-      
-      
-      
-      <div className='ellipse bg-dark'></div>
-      
-      <div className='ellipse2 bg-dark'>
-      
+        <div className='ellipse bg-dark'>
         
-        <div className='navi-list'>
-          <a id="li1"><img className='list-item' src={developers} alt="Developers"/></a>
-          <a id="li2"><img className='list-item' src={home} alt="Home"/></a>
-          <a id="li3"><img className='list-item' src={help} alt="Help"/></a>
         </div>
-      </div>
 
+        <div className='ellipse2 bg-dark'>
+          <div className='navi-list'>
+            <img title="Meet the developers." className='list-item' id="li1" src={developers} alt="Developers" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("developers")} />
+            <img title="You are at the home page." className='list-item' id="li2" src={home} alt="Home" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("home")}  />
+            <img title="Go to the help page." className='list-item' id="li3" src={help} alt="Help" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("help")} />
+          </div>
+        </div>
+        </div>
+
+          <div className='register_container'>
+            {card_title === "Register" &&
+            <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
+
+            {card_title === "Login" &&
+            <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
+            
+            {/*{card_title === "Developed By" &&
+                <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}*/}
+
+            <p onClick={()=>form_card_selector ( flag ) }> {reg_log_switch} </p>
+
+          </div>
+
+          
+
+        </div>
+      }
+
+
+      {
+        page_render === "help" &&
+        <div className="help">
+          <h1>Help Page</h1>
+          <div className='help-navi-list'>
+            <img className='list-item' id="hli1" src={developers} alt="Developers" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("developers")} />
+            <img className='list-item' id="hli2" src={home} alt="Home" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("home")}  />
+            <img title="You are at the help page." className='list-item' id="hli3" src={help} alt="Help" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>{setpage_render("help"); alert("You are at the help page.")}} />
+          </div>
+         
+        </div>
+      }
       
+      {
+        page_render === "developers" &&
+        <div>
+        <h1>DEv</h1>
+        <div className='dev-nav'>
+          <img src={home} alt="back" className='home-btn' onClick={()=> backBtn() } />
+        </div>
+        </div>
+      }
+
       {/* test button */}
       <Button onClick={vote_event}>vote</Button>
       <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>

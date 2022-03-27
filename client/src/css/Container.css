@@ -61,10 +61,7 @@
         background-color:  #333333e3;
 }
 
-#confirm_btn{
-        height: 50px;
-        top: 100px;
-}
+
 
 .form{
         position: relative;
@@ -106,7 +103,21 @@
         
 }
 
+.block_loading{
+        filter: gray; /* IE6-9 */
+        -webkit-filter: grayscale(2); /* Google Chrome, Safari 6+ & Opera 15+ */
+        filter: grayscale(2); /* Microsoft Edge and Firefox 35+ */
+        top: 10px;
+        position: absolute;
+        right: -10px;
+        width: 150px;
+        transition: transform .2s;
+}
 
+.block_loading:hover{
+        transform: scale(1.1);
+        
+}
 
         
 

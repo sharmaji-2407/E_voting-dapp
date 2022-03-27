@@ -1,9 +1,10 @@
 import React,{useState} from 'react';
-import { Button,Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import '../css/Container.css';
 import RegistrationForm from './RegistrationForm';
 import LoginForm from './LoginForm';
 import back_arrow from "../media/Back_Arrow.png";
+import chain_ani from "../media/connecting-blocks-unscreen.gif";
 
 const Container = (props) => {
 
@@ -24,7 +25,7 @@ const Container = (props) => {
             setform("active");
             
         }
-        else 
+        else
         {
             setactive_form("login_form");
             setlabel("inactive");
@@ -41,8 +42,12 @@ const Container = (props) => {
 
     return (
         <div>
-            
-            <div className='cont' id="cont_id">
+        <div className='cont' id="cont_id">
+        <img className="block_loading" src={chain_ani} alt="loaDING" 
+        draggable="false" 
+        onContextMenu={
+            (e)=> e.preventDefault()} 
+            title="Storing Data" />
                {label === "active" &&
                 <div className='label'>
                     <h3>{props.title}</h3>

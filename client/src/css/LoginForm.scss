@@ -1,0 +1,139 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+
+/*   color variables */
+$clr-primary: green;
+$clr-primary-light: rgb(43, 185, 43);
+$clr-primary-dark: #212529;
+$clr-gray100: #f9fbff;
+$clr-gray150: #f4f6fb;
+$clr-gray200: #eef1f6;
+$clr-gray300: #e1e5ee;
+$clr-gray400: #767b91;
+$clr-gray500: #4f546c;
+$clr-gray600: #2a324b;
+$clr-gray700: #212529;
+$clr-bg: #212529;
+
+/*   border radius */
+$radius: 0.3rem;
+
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
+
+
+
+#field1{
+  position: absolute;
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+  top: 0px;
+  left: 0px;
+}
+
+#field2{
+  position: absolute;
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+  top: 86px;
+  left: 0px;
+}
+#field3{
+  position: absolute;
+  display: inline-block;
+  width: 200px;
+  margin: 10px;
+  top: 177px;
+  left: 0px;
+}
+
+.form {
+  position: absolute;
+  width: 20rem;
+  height: 3rem;
+ 
+
+  &__input {
+   
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // border: 2px solid $clr-gray300;
+    border: none;
+    z-index: 100;
+    border-bottom: 5px solid rgb(66, 66, 66);
+    border-radius: $radius;
+    font-family: inherit;
+    font-size: inherit;
+    color: #43484e;
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+
+    &:hover {
+      border-color: $clr-primary-light;
+      background-color: #eef1f659;
+    }
+
+    /* Change border when input focus*/
+
+    &:focus {
+      border-color: $clr-primary;
+      background-color: #eef1f659;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 0.1rem;
+    top: 0.2rem;
+    padding: 0 0.5rem;
+    color: #212529;
+    cursor: text;
+    z-index:80;
+    transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+    // background-color: #212529;
+  }
+}
+
+/* 
+1. When the input is in the focus state
+reduce the size of the label and move upwards 
+
+2. Keep label state when content is in input field 
+*/
+
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: -1.5rem;
+  font-size: 0.9rem;
+  left: 0rem;
+  color: #747474;
+}
+
+.login_btn{
+  position: absolute !important;
+  
+  left: 10% !important;
+}
+
+#confirm_btn{
+  left: -3rem;
+  height: 50px;
+  top: 20rem;
+}
+
+
+.login_form{
+  position: absolute;
+  text-align: center;
+}
