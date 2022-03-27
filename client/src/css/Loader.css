@@ -36,6 +36,6 @@
   padding: 0;
 }
 
-img {
+.scene img {
   filter: grayscale(95%);
 }

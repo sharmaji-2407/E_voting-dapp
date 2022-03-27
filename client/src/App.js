@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Web3 from 'web3';
-import NavBar from './components/NavBar';
+
 import Vote from './components/Vote';
 import Container from './components/Container';
 import ElectionAbi from './contracts/Elections.json';
@@ -232,8 +232,9 @@ const App = () => {
     <div className="app">
     {/* <Loader /> */}
     <div className='Navbar' onContextMenu={(e)=> e.preventDefault()}>
-      <NavBar account= {currentAccount} />
+      <p>{currentAccount}</p>
     </div>
+      
     
     <img className='moving_bg' src={moving_chain_bg} alt="moving chain" draggable="false" onContextMenu={(e)=> e.preventDefault()}/>
     {page_render === "home"  &&
