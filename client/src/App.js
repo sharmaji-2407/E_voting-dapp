@@ -249,11 +249,11 @@ const App = () => {
           autoStart: true,
           loop: true,
         }}/>
-        <div className='ellipse bg-dark'>
+        <div className='ellipse'>
         
         </div>
 
-        <div className='ellipse2 bg-dark'>
+        <div className='ellipse2'>
           <div className='navi-list'>
             <img title="Meet the developers." className='list-item' id="li1" src={developers} alt="Developers" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("developers")} />
             <img title="You are at the home page." className='list-item' id="li2" src={home} alt="Home" draggable="false" onContextMenu={(e)=> e.preventDefault()} onClick={()=>setpage_render("home")}  />

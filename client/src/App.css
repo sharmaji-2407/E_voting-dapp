@@ -5,7 +5,7 @@
     position: relative;
     margin: 0%;
     width: 100%;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%,rgba(0, 0, 0, 0.363) 100%), url('./media/bg_big.png') ;
+    background-image: url('./media/bg_big.png') ;
     
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
@@ -32,7 +32,7 @@
     left: 62px;
     top: 521px;
     font-size: 3rem;
-    color: aliceblue;
+    color: #FA58B6;
     z-index: 500;
 }
     
@@ -46,6 +46,7 @@
     left: -266px;
     top: -57px;
     z-index: 100;
+    background-color: #1A1A40;
 }
 .ellipse2{
     position: absolute;
@@ -57,7 +58,7 @@
     top: -98px;
     opacity: 80%;
     transition: transform .5s ease-in-out, opacity .5s ease-in-out;
-    
+    background-color: #1A1A40;
     
 }
 .ellipse2:hover{
@@ -75,7 +76,7 @@
     position: absolute;   
     right: 100px;
     float: right;
-    top: 10%;
+    top: 13%;
     text-align: center;
   
 }
@@ -98,7 +99,7 @@
 }
 
 #main-heading{
-    color: aliceblue;
+    color: #FA58B6;
     display: inline;
     position: absolute;
     /* top: 30%; */
@@ -266,7 +267,7 @@
     height: 105vh;
     width:80%;
     opacity: 0.3;
-    filter: blur(2px) grayscale(1) invert(0.85);
+    filter: blur(1px) brightness(90%);
 }
 
 .heading_bg{
