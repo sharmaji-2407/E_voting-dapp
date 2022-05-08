@@ -13,6 +13,7 @@ import developers from './media/code_50px.png';
 import home from './media/home_50px.png';
 import help from './media/help_50px.png';
 import moving_chain_bg from "./media/block-bg-unscreen.gif";
+import heading_chain_bg from "./media/heading_chain.gif";
 
 
 
@@ -236,12 +237,12 @@ const App = () => {
     </div>
       
     
-    <img className='moving_bg' src={moving_chain_bg} alt="moving chain" draggable="false" onContextMenu={(e)=> e.preventDefault()}/>
     {page_render === "home"  &&
     
-      <div className="home" >
-        
-        <div><h1 className='light' id="main-heading">Welcome to new era of voting.</h1>
+    <div className="home" >
+    <img className='moving_bg' src={moving_chain_bg} alt="moving chain" draggable="false" onContextMenu={(e)=> e.preventDefault()}/>
+    
+    <div><h1 className='light' id="main-heading">Welcome to new era of voting.</h1>
 
         
         <Typewriter 
@@ -251,6 +252,8 @@ const App = () => {
           loop: true,
         }}/>
         <div className='ellipse'>
+        <img className='heading_bg' src={heading_chain_bg} alt="moving chain" draggable="false" onContextMenu={(e)=> e.preventDefault()}/>
+        
         
         </div>
 
