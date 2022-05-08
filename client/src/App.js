@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import Web3 from 'web3';
-
 import Vote from './components/Vote';
 import Container from './components/Container';
 import ElectionAbi from './contracts/Elections.json';
-import Button from '@restart/ui/esm/Button';
 import Loader from './components/Loader';
 import VoteCounter from './components/VoteCounter';
 import Typewriter from "typewriter-effect";
@@ -14,7 +12,7 @@ import home from './media/home_50px.png';
 import help from './media/help_50px.png';
 import moving_chain_bg from "./media/block-bg-unscreen.gif";
 import heading_chain_bg from "./media/heading_chain.gif";
-
+import wallet from "./media/ewallet.png";
 
 
 
@@ -41,7 +39,7 @@ const App = () => {
 
 
   //states to render components
-  const [render_vote, setrender_vote] = useState(false);
+ 
   
   const [flag, setflag] = useState("alr_reg"); // alr_reg -> already registered ;  not_reg -> not registered
   
@@ -52,7 +50,9 @@ const App = () => {
 
   const [reg_log_switch, setreg_log_switch] = useState("Already Registered? Login Here.")
 
-  const [page_render, setpage_render] = useState("home")
+  const [page_render, setpage_render] = useState("home");
+
+  const [walletcon, setwalletcon] = useState(false);
 
 
 
@@ -60,13 +60,8 @@ const App = () => {
 
 // <-----------------------Button Click events----------------------------->
 
-  //button click events 
-  const vote_event = () => {
-    setrender_vote(true);
-    
-  }
 
-  
+
 
   const form_card_selector = (select_value) => {
     //setrender_vote(false);
@@ -74,7 +69,7 @@ const App = () => {
     
     if (select_value === "alr_reg")
     {
-      console.log("login form");
+      // console.log("login form");
       setcard_title ("Login");
       setcard_content("Login with your credentials and proceed for voting.");
       setcard_btn("Login");
@@ -83,7 +78,7 @@ const App = () => {
     }
     else if(select_value === "not_reg")
     {
-      console.log("Reg form");
+      // console.log("Reg form");
       setcard_title ("Register");
       setcard_content("Get your self registered bofore the voting process");
       setcard_btn("Get Registered");
@@ -106,7 +101,7 @@ const App = () => {
     loadWeb3();
     LoadBlockChainData();
   
-  }, []);
+  }, [walletcon]);
 
 
 
@@ -184,8 +179,8 @@ const App = () => {
       //setting smart comtract instance to "election" variable we called above
       setElectionSC(election);
       
-      console.log(election);
-      console.log(candidate1.voteCount);
+      // console.log(election);
+      // console.log(candidate1.voteCount);
 
       //setting loader as false as the loading part is done 
       setloader(false);
@@ -220,7 +215,14 @@ const App = () => {
     return <Loader />
   }
     
-
+  const setVoting = (status) => {
+    if(status === true)
+    {
+    setpage_render("voting");
+    setwalletcon("true");
+    }
+    
+  };
 
 
 
@@ -271,7 +273,7 @@ const App = () => {
             <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
 
             {card_title === "Login" &&
-            <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}
+            <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'} setVotingPage={setVoting} />}
             
             {/*{card_title === "Developed By" &&
                 <Container title={card_title} content={card_content} button={card_btn} width={'400px'} height={'500px'}/>}*/}
@@ -309,15 +311,15 @@ const App = () => {
         </div>
       }
 
-      {/* test button */}
-      <Button onClick={vote_event}>vote</Button>
-      <Button onClick={()=>{setrender_vote(false)}}>vote off</Button>
-      {render_vote && (<Vote candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} vote={voteCandidate} />)}
-     
-      
-      
-      <VoteCounter candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} />
-      
+      {
+        page_render === "voting"  &&
+
+        <div className='voting_page'>
+          <img className='walletcon' src={wallet} alt="Connect to wallet" />
+          <Vote candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} vote={voteCandidate} />
+          <VoteCounter candidate1={Candidate1} candidate2={Candidate2} candidate3={Candidate3} />
+        </div>
+      }
       
     </div>
   );

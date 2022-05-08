@@ -138,3 +138,22 @@ reduce the size of the label and move upwards
   position: absolute;
   text-align: center;
 }
+
+.showpass{
+  position: absolute;
+  display: inline;
+  right: -40px;
+  bottom: -38px;
+  width: 25px;
+  transition: 0.2s;
+  
+}
+
+.showpass:hover{
+  transform: scale(1.1);
+  
+}
+
+.showpass:active{
+  transform: scale(1.3);
+}

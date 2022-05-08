@@ -7,7 +7,7 @@ const cors = require('cors');
 
 
 
-const db = mysql.createPool({
+const db = mysql.createConnection({
     host: 'localhost',
     port: '3306',
     user: 'root',
@@ -18,30 +18,53 @@ const db = mysql.createPool({
 
 
 
-app.use(cors())
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.json())
+app.use(cors());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.json());
 
-app.get('/api/get', (req,res) => {
-    const sqlSelect = "SELECT * FROM voter_info";
-    db.query(sqlSelect, (err,result) => {
-        res.send(result);
-    })
+app.post('/api/login', (req,res) => {
+    const voterId = req.body.voterId;
+    const voterPassword = req.body.voterPassword;
+
+    const sqlSelect = "SELECT * FROM voter_info WHERE voterId = ? AND voterPassword = ?";
+    db.query(sqlSelect, [voterId, voterPassword], (err,result) => {
+        
+        if(err){
+            res.send({err:err});
+        }
+
+        if(result.length > 0)
+        {
+            delete result[0].voterPassword;
+            res.send(result[0]);
+            
+        }
+        else{
+            res.send({message : "Invalid voterId or Password."});
+        }
+    });
 })
 
 
-app.post("/api/insert", (req, res)=>{
+
+
+app.post("/api/register", (req, res)=>{
                     
 
-    const voterId = req.body.voterId
-    const voterName = req.body.voterName
-    const voterPassword = req.body.voterPassword
+    const voterId = req.body.voterId;
+    const voterPassword = req.body.voterPassword;
+    const voterName = req.body.voterName;
 
-    const sqlInsert = "INSERT INTO voter_info(voterId,voterName,voterPassword) VALUES (?,?,?)"
-    db.query(sqlInsert, [voterId,voterName,voterPassword],(err,result)=>{
+    db.query(
+    "INSERT INTO voter_info(voterId,voterName,voterPassword) VALUES (?,?,?)", 
+    [voterId,voterName,voterPassword],
+    (err,result)=>{
         console.log(result);
-    });
+    }
+    );
 });
+
+
 
 
 

@@ -38,6 +38,10 @@ const Container = (props) => {
         setlabel("active");
         setform("inactive");
     }
+
+    const loginData = (status) => {
+        props.setVotingPage(status);
+    }
    
 
     return (
@@ -70,7 +74,7 @@ const Container = (props) => {
                     {active_form === "login_form" && 
                         <div className='form'>
                         <img src={back_arrow} alt="back" className='back-btn' onClick={()=> backBtn() } />
-                            <LoginForm />
+                            <LoginForm sendLoginData={loginData} />
                         </div>
                     }
                     </div>
