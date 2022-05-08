@@ -27,7 +27,7 @@ contract Elections{
         );
     
     //defining the constructor.
-    constructor() public {
+    constructor()  {
         addCandidate("Narendra D Modi", "BJP");
         addCandidate("Rahul Gandhi", "INC");
         addCandidate("Arvind Kejriwal","AAP");
